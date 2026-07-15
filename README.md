@@ -28,3 +28,15 @@ The installer will ask you:
 - Ubuntu 22.04+ / Debian 12+
 - Root access
 - Minimum 1 GB RAM (for Go build)
+```bash
+cd /root/go-whatsapp-web-multidevice/src && \
+systemctl stop wagateway && \
+rm -f ../storages/*.db && \
+go clean -modcache && \
+go get -u go.mau.fi/whatsmeow@latest && \
+go mod tidy && \
+echo "Membangun ulang aplikasi... (mohon tunggu 1-2 menit)" && \
+go build -o ../whatsapp main.go && \
+systemctl start wagateway && \
+echo "Kompilasi Selesai! Cek Dasbor Anda."
+```
